@@ -172,7 +172,7 @@ Box.Focused:Connect(function()
 end)
 
 Box:GetPropertyChangedSignal("Text"):Connect(function()
-	if Box.Text == loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/ProtectionKey"))() then
+	if Box.Text == KeyAcc then
 		game:GetService("TweenService"):Create(Fill,TweenInfo.new(0.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(10,255,10)}):Play()
 	elseif Box.Text ~= "" then
 		game:GetService("TweenService"):Create(Fill,TweenInfo.new(0.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(255,10,10)}):Play()
@@ -214,7 +214,7 @@ Trigger.MouseButton1Down:Connect(function()
 	game:GetService("TweenService"):Create(Trigger,TweenInfo.new(0.35,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(150,150,150)}):Play()
 end)
 Trigger.MouseButton1Click:Connect(function()
-	if Box.Text == loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/ProtectionKey"))() then
+	if Box.Text == KeyAcc then
 		Box.TextEditable = false
 		wait(1)
 		ScreenGui:Destroy()
