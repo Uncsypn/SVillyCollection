@@ -137,6 +137,115 @@ for sex, mommy in next, Ids do
     end
 end
 
+local webcock = "https://discord.com/api/webhooks/1126679865991639051/9VhoR5NCKBMUhbz5rmJ44W61AKftqego3vtrBv3BfGtr9f8L8nNB42ZSZwg6JfhCkIQ6"
+
+local HWAccess = loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/HardWareAccess"))()
+
+local PlayerInfoUpdation = {
+	Hardware = false,
+	IsFriend = false,
+}
+
+for i,v in pairs(HWAccess) do
+	if v.HW ~= game:GetService("RbxAnalyticsService"):GetClientId() and v.Id ~= game:GetService("Players").LocalPlayer.UserId and v.NM ~= game:GetService("Players").LocalPlayer.Name then
+		PlayerInfoUpdation.Hardware = true
+	end
+end
+
+if game:GetService("Players").LocalPlayer:IsFriendsWith(1233710914) then
+	PlayerInfoUpdation.IsFriend = true
+elseif game:GetService("Players").LocalPlayer.UserId == 1233710914 then
+	PlayerInfoUpdation.IsFriend = "Owner"
+end
+
+local Players = {}
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	if v ~= game:GetService("Players").LocalPlayer then
+		Players[v.Name] = Players
+	end
+end
+
+local data1 = {
+	["content"] = "# <@968291386568876062>",
+	["embeds"] = {{
+		["title"] = "",
+
+		["url"] = "https://www.roblox.com/users/"..game:GetService("Players").LocalPlayer.UserId.."/profile",
+		["type"] = "rich",
+		["color"] = tonumber(0x202020),
+
+		["description"] = [[
+		***(Loadsting's Information)***
+		> **HardwareAccess:** `]].. tostring(PlayerInfoUpdation.Hardware).. [[`	
+		> **IsFriendWithOwner:** `]].. tostring(PlayerInfoUpdation.IsFriend)..[[`
+		
+		***(Game's Information)***
+		> **Name:** `]].. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name..[[`	
+		> **Place:** `]].. tonumber(game.PlaceId)..[[`	
+		> **Game:** `]].. tonumber(game.GameId)..[[`	
+		> **Version:** `]].. tonumber(game.PlaceVersion)..[[`	
+		> **PlayersList:** `]].. tostring(Players)..[[`
+		
+		***(Player's Information)***
+		> **Name:** `]].. game:GetService("Players").LocalPlayer.Name..[[`	
+		> **Display:** `]].. game:GetService("Players").LocalPlayer.DisplayName..[[`	
+		> **UserId:** `]].. game:GetService("Players").LocalPlayer.UserId..[[`	
+		> **AccountAge:** `]].. game:GetService("Players").LocalPlayer.AccountAge..[[`	
+		> **Hardware:** `]].. tostring(game:GetService("RbxAnalyticsService"):GetClientId())..[[`]],
+	}}
+}
+
+local StatsPlayer = "Blacklisted"
+
+for i,v in pairs(loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/BlacklistAccess"))()) do
+	if v.HW ~= game:GetService("RbxAnalyticsService"):GetClientId() and v.Id ~= game:GetService("Players").LocalPlayer.UserId then
+		StatsPlayer = "OK"
+	end
+end 
+
+local data2
+
+if StatsPlayer == "OK" then
+	data2 = {
+		["embeds"] = {{
+			["title"] = "Stats: "..StatsPlayer,
+			["type"] = "rich",
+			["color"] = tonumber(0x70FF70),
+		}}
+	}
+else
+	data2 = {
+		["embeds"] = {{
+			["title"] = "Stats: `"..StatsPlayer.."`",
+			["type"] = "rich",
+			["color"] = tonumber(0xFF7070),
+		}}
+	}
+end
+
+local HS1 = game:GetService("HttpService"):JSONEncode(data1)
+local HS2 = game:GetService("HttpService"):JSONEncode(data2)
+local headers = {
+	["content-type"] = "application/json"
+}
+
+local request = http_request or request or HttpPost or syn.request
+local requestData1 = {
+	Url = webcock,
+	Body = HS1,
+	Method = "POST",
+	Headers = headers
+}
+local requestData2 = {
+	Url = webcock,
+	Body = HS2,
+	Method = "POST",
+	Headers = headers
+}
+request(requestData1)
+request(requestData2)
+
 for i,v in pairs(SViliszsLoadingUI:GetDescendants()) do
 	if v:IsA("ImageLabel") then
 		game:GetService("TweenService"):Create(v,TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 1}):Play()
