@@ -1,8 +1,22 @@
 if getgenv().SVillyLoginMenu and getgenv().SVillyLoginMenu == 1 then
-  return
+	return
 end
 
 getgenv().SVillyLoginMenu = 1
+
+local KeyAcc = loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/ProtectionKey"))()
+
+local OrgKey = math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)
+
+for i,v in pairs(KeyAcc) do
+	if v then
+		OrgKey = v
+	elseif v == nil then
+		return warn'[Uncsypn]: There was an error with loading the key, Please retry later.'
+	else
+		return warn'[Uncsypn]: There was an error with loading the key, Please retry later.'
+	end
+end
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -172,7 +186,7 @@ Box.Focused:Connect(function()
 end)
 
 Box:GetPropertyChangedSignal("Text"):Connect(function()
-	if Box.Text == KeyAcc then
+	if Box.Text == OrgKey then
 		game:GetService("TweenService"):Create(Fill,TweenInfo.new(0.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(10,255,10)}):Play()
 	elseif Box.Text ~= "" then
 		game:GetService("TweenService"):Create(Fill,TweenInfo.new(0.15,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(255,10,10)}):Play()
@@ -214,12 +228,10 @@ Trigger.MouseButton1Down:Connect(function()
 	game:GetService("TweenService"):Create(Trigger,TweenInfo.new(0.35,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(150,150,150)}):Play()
 end)
 Trigger.MouseButton1Click:Connect(function()
-	if Box.Text == KeyAcc then
+	if Box.Text == OrgKey then
 		Box.TextEditable = false
 		wait(1)
 		ScreenGui:Destroy()
 		getgenv().SVillyLoginMenuCompletion = true
 	end
 end)
-
-repeat wait() until getgenv().SVillyLoginMenuCompletion and getgenv().SVillyLoginMenuCompletion == true
