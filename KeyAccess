@@ -218,5 +218,8 @@ Trigger.MouseButton1Click:Connect(function()
 		Box.TextEditable = false
 		wait(1)
 		ScreenGui:Destroy()
+		getgenv().SVillyLoginMenuCompletion = true
 	end
 end)
+
+repeat wait() until getgenv().SVillyLoginMenuCompletion and getgenv().SVillyLoginMenuCompletion == true
