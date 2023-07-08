@@ -220,7 +220,6 @@ for i,v in pairs(ScreenGui:GetDescendants()) do
 	end
 	if v:IsA("ImageButton") then
 		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 0}):Play()
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
 	end
 end
 
