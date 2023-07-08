@@ -1,9 +1,3 @@
-if getgenv().SVillyLoginMenu and getgenv().SVillyLoginMenu == true then
-	return
-end
-
-getgenv().SVillyLoginMenu = true
-
 local KeyAcc = loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/ProtectionKey"))()
 
 local OrgKey = math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)..math.random(100000,999999)
