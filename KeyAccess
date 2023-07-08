@@ -44,6 +44,7 @@ local Image = Instance.new("ImageLabel")
 local UICorner_10 = Instance.new("UICorner")
 ScreenGui.Parent = (game:GetService("CoreGui") or gethui())
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Enabled = false
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -177,6 +178,34 @@ Image.ScaleType = Enum.ScaleType.Crop
 UICorner_10.CornerRadius = UDim.new(1, 1)
 UICorner_10.Parent = Image
 
+for i,v in pairs(ScreenGui:GetDescendants()) do
+	if v:IsA("ImageLabel") then
+		v.ImageTransparency = 1
+	end
+	if v:IsA("Frame") then
+		v.BackgroundTransparency = 1
+	end
+	if v:IsA("TextLabel") then
+		v.TextTransparency = 1
+	end
+end
+
+ScreebGui.Enabled = true
+
+wait(1.5)
+
+for i,v in pairs(ScreenGui:GetDescendants()) do
+	if v:IsA("ImageLabel") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 0}):Play()
+	end
+	if v:IsA("Frame") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
+	end
+	if v:IsA("TextLabel") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency = 0}):Play()
+	end
+end
+
 game:GetService("RunService").Heartbeat:Connect(function()
 	Frame.Position = UDim2.new(0.5, -Frame.Size.X.Offset/2, 0.5, -Frame.Size.Y.Offset/2)
 end)
@@ -231,6 +260,18 @@ Trigger.MouseButton1Click:Connect(function()
 	if Box.Text == OrgKey then
 		Box.TextEditable = false
 		wait(1)
+		for i,v in pairs(ScreenGui:GetDescendants()) do
+	if v:IsA("ImageLabel") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency =1}):Play()
+	end
+	if v:IsA("Frame") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
+	end
+	if v:IsA("TextLabel") then
+		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency = 1}):Play()
+	end
+end
+wait(1.5)
 		ScreenGui:Destroy()
 		getgenv().SVillyLoginMenuCompletion = true
 	end
