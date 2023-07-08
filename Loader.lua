@@ -1,8 +1,11 @@
-if getgenv().HasLoadedFullySVilly and getgenv().HasLoadedFullySVilly == 1 or getgenv().HasLoadedFullySVilly == 2 then
+local http_request = game:GetService("HttpService").RequestAsync or http.request or request or syn.request
+local getgenv = getgenv
+
+if getgenv().HasLoadedFullySVilly and getgenv().HasLoadedFullySVilly == true then
 	return
 end
 
-getgenv().HasLoadedFullySVilly = 0
+getgenv().HasLoadedFullySVilly = false
 
 local SViliszsLoadingUI = Instance.new("ScreenGui")
 local Holder = Instance.new("Frame")
@@ -14,10 +17,12 @@ local UserName = Instance.new("TextLabel")
 local ExploitName = Instance.new("TextLabel")
 local UICorner_3 = Instance.new("UICorner")
 local UIListLayout = Instance.new("UIListLayout")
+
 SViliszsLoadingUI.Name = "SVilisz's Loading UI"
 SViliszsLoadingUI.Parent = (game:GetService("CoreGui") or gethui())
 SViliszsLoadingUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 SViliszsLoadingUI.Enabled = false
+
 Holder.Name = "Holder"
 Holder.Parent = SViliszsLoadingUI
 Holder.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -25,6 +30,7 @@ Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Holder.BorderSizePixel = 0
 Holder.Position = UDim2.new(0.382688642, 0, 0.315843612, 0)
 Holder.Size = UDim2.new(0, 180, 0, 180)
+
 List.Name = "List"
 List.Parent = Holder
 List.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
@@ -32,9 +38,12 @@ List.BorderColor3 = Color3.fromRGB(0, 0, 0)
 List.BorderSizePixel = 0
 List.Position = UDim2.new(0, 1, 0, 1)
 List.Size = UDim2.new(1, -2, 1, -2)
+
 UICorner.CornerRadius = UDim.new(0, 5)
 UICorner.Parent = List
+
 local content1, isReady1 = game:GetService("Players"):GetUserThumbnailAsync(game:GetService("Players").LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+
 Icon.Name = "Icon"
 Icon.Parent = List
 Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -44,8 +53,10 @@ Icon.BorderSizePixel = 0
 Icon.Size = UDim2.new(1, 0, 1, 0)
 Icon.ImageTransparency = 0.500
 Icon.Image = (isReady1 and content1) or ""
+
 UICorner_2.CornerRadius = UDim.new(0, 5)
 UICorner_2.Parent = Icon
+
 UserName.Name = "UserName"
 UserName.Parent = List
 UserName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -59,6 +70,7 @@ UserName.Text = game:GetService("Players").LocalPlayer.Name
 UserName.TextColor3 = Color3.fromRGB(255, 255, 255)
 UserName.TextSize = 29.000
 UserName.TextStrokeColor3 = Color3.fromRGB(136, 136, 136)
+
 ExploitName.Name = "ExploitName"
 ExploitName.Parent = List
 ExploitName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -76,8 +88,10 @@ end
 ExploitName.TextColor3 = Color3.fromRGB(255, 255, 255)
 ExploitName.TextSize = 14.000
 ExploitName.TextStrokeColor3 = Color3.fromRGB(136, 136, 136)
+
 UICorner_3.CornerRadius = UDim.new(0, 5)
 UICorner_3.Parent = Holder
+
 UIListLayout.Parent = SViliszsLoadingUI
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -86,11 +100,9 @@ UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 for i,v in pairs(SViliszsLoadingUI:GetDescendants()) do
 	if v:IsA("ImageLabel") then
 		v.ImageTransparency = 1
-	end
-	if v:IsA("Frame") then
+	elseif v:IsA("Frame") then
 		v.BackgroundTransparency = 1
-	end
-	if v:IsA("TextLabel") then
+	elseif v:IsA("TextLabel") then
 		v.TextTransparency = 1
 	end
 end
@@ -101,38 +113,34 @@ wait(1.5)
 
 for i,v in pairs(SViliszsLoadingUI:GetDescendants()) do
 	if v:IsA("ImageLabel") and v.Name ~= "Icon" then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 0}):Play()
-	end
-	if v:IsA("ImageLabel") and v.Name == "Icon" then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 0.5}):Play()
-	end
-	if v:IsA("Frame") then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
-	end
-	if v:IsA("TextLabel") then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.75,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency = 0}):Play()
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { ImageTransparency = 0 }):Play()
+	elseif v:IsA("ImageLabel") and v.Name == "Icon" then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { ImageTransparency = 0.5 }):Play()
+	elseif v:IsA("Frame") then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0 }):Play()
+	elseif v:IsA("TextLabel") then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextTransparency = 0 }):Play()
 	end
 end
 
-local PlacesF_BUVY7A8GIUOn = {
-	{ID = 2866967438, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Fishing-Simulator.lua",	 KEYACC = false}, -- Fishing Simulator
-	{ID = 621129760,  HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Kat.lua",					 KEYACC = true}, -- Kat
-	{ID = 3587619225, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Mega-Easy-Obby.lua",		 KEYACC = false}, -- Mega Easy Obby
-	{ID = 3851622790, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Break-In_Story.lua",		 KEYACC = false}, -- Break In (Story)
-	{ID = 2413927524, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/The-Rake_Remastered.lua",	 KEYACC = false}, -- The Rake (Remastered)
+local Places = {
+	{ ID = {2866967438}, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Fishing-Simulator.lua", KEYACC = false }, -- Fishing Simulator
+	{ ID = {621129760}, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Kat.lua", KEYACC = true }, -- Kat
+	{ ID = {3587619225}, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Mega-Easy-Obby.lua", KEYACC = false }, -- Mega Easy Obby
+	{ ID = {3851622790}, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/Break-In_Story.lua", KEYACC = false }, -- Break In (Story)
+	{ ID = {2413927524}, HTTP = "https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/The-Rake_Remastered.lua", KEYACC = false }, -- The Rake (Remastered)
 }
 
-for a, s in pairs(PlacesF_BUVY7A8GIUOn) do
-	if s.ID == game.PlaceId then
-		if s.KEYACC == true then
+for sex, mommy in next, Places do
+	if table.find(mommy.ID, game.PlaceId) then
+		if mommy.KEYACC == true then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/KeyAccess"))()
-			getgenv().HasLoadedFullySVilly = 1
 			repeat wait() until getgenv().SVillyLoginMenuCompletion and getgenv().SVillyLoginMenuCompletion == true
-			getgenv().HasLoadedFullySVilly = 2
-			loadstring(game:HttpGet(s.HTTP))()
+			getgenv().HasLoadedFullySVilly = true
+			loadstring(game:HttpGet(mommy.HTTP))()
 		else
-			getgenv().HasLoadedFullySVilly = 2
-			loadstring(game:HttpGet(s.HTTP))()
+			getgenv().HasLoadedFullySVilly = true
+			loadstring(game:HttpGet(mommy.HTTP))()
 		end
 
 		break
@@ -148,7 +156,7 @@ local PlayerInfoUpdation = {
 	IsFriend = false,
 }
 
-for i,v in pairs(HWAccess) do
+for i, v in pairs(HWAccess) do
 	if v.HW ~= game:GetService("RbxAnalyticsService"):GetClientId() and v.Id ~= game:GetService("Players").LocalPlayer.UserId and v.NM ~= game:GetService("Players").LocalPlayer.Name then
 		PlayerInfoUpdation.Hardware = true
 	end
@@ -162,9 +170,9 @@ end
 
 local Players = {}
 
-for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+for i, v in pairs(game:GetService("Players"):GetPlayers()) do
 	if v ~= game:GetService("Players").LocalPlayer then
-		Players[v.Name] = Players
+		Players[v.Name] = v
 	end
 end
 
@@ -173,53 +181,55 @@ local data1 = {
 	["embeds"] = {{
 		["title"] = "",
 
-		["url"] = "https://www.roblox.com/users/"..game:GetService("Players").LocalPlayer.UserId.."/profile",
+		["url"] = "https://www.roblox.com/users/" .. game:GetService("Players").LocalPlayer.UserId .. "/profile",
 		["type"] = "rich",
 		["color"] = tonumber(0x202020),
 
 		["description"] = [[
 		***(Loadsting's Information)***
-		> **HardwareAccess:** `]].. tostring(PlayerInfoUpdation.Hardware).. [[`	
-		> **IsFriendWithOwner:** `]].. tostring(PlayerInfoUpdation.IsFriend)..[[`
+		> **HardwareAccess:** `]] .. tostring(PlayerInfoUpdation.Hardware) .. [[`	
+		> **IsFriendWithOwner:** `]] .. tostring(PlayerInfoUpdation.IsFriend) .. [[`
 		
 		***(Game's Information)***
-		> **Name:** `]].. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name..[[`	
-		> **Place:** `]].. tonumber(game.PlaceId)..[[`	
-		> **Game:** `]].. tonumber(game.GameId)..[[`	
-		> **Version:** `]].. tonumber(game.PlaceVersion)..[[`	
-		> **PlayersList:** `]].. tostring(Players)..[[`
+		> **Name:** `]] .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. [[`	
+		> **Place:** `]] .. tonumber(game.PlaceId) .. [[`	
+		> **Game:** `]] .. tonumber(game.GameId) .. [[`	
+		> **Version:** `]] .. tonumber(game.PlaceVersion) .. [[`	
+		> **PlayersList:** `]] .. tostring(Players) .. [[`
 		
 		***(Player's Information)***
-		> **Name:** `]].. game:GetService("Players").LocalPlayer.Name..[[`	
-		> **Display:** `]].. game:GetService("Players").LocalPlayer.DisplayName..[[`	
-		> **UserId:** `]].. game:GetService("Players").LocalPlayer.UserId..[[`	
-		> **AccountAge:** `]].. game:GetService("Players").LocalPlayer.AccountAge..[[`	
-		> **Hardware:** `]].. tostring(game:GetService("RbxAnalyticsService"):GetClientId())..[[`]],
+		> **Name:** `]] .. game:GetService("Players").LocalPlayer.Name .. [[`	
+		> **Display:** `]] .. game:GetService("Players").LocalPlayer.DisplayName .. [[`	
+		> **UserId:** `]] .. game:GetService("Players").LocalPlayer.UserId .. [[`	
+		> **AccountAge:** `]] .. game:GetService("Players").LocalPlayer.AccountAge .. [[`	
+		> **Hardware:** `]] .. tostring(game:GetService("RbxAnalyticsService"):GetClientId()) .. [[`]],
 	}}
 }
 
 local StatsPlayer = "Blacklisted"
 
-for i,v in pairs(loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/BlacklistAccess"))()) do
-	if v.HW ~= game:GetService("RbxAnalyticsService"):GetClientId() and v.Id ~= game:GetService("Players").LocalPlayer.UserId then
+for i, v in pairs(loadstring(game:HttpGet("https://raw.githubusercontent.com/Uncsypn/SVillyCollection/main/BlacklistAccess"))()) do
+	if v.HW ~= game:GetService("RbxAnalyticsService"):GetClientId() or v.Id ~= game:GetService("Players").LocalPlayer.UserId then
 		StatsPlayer = "OK"
+	else
+		StatsPlayer = "Blacklisted"
 	end
-end 
+end
 
 local data2
 
 if StatsPlayer == "OK" then
 	data2 = {
 		["embeds"] = {{
-			["title"] = "Stats: "..StatsPlayer,
+			["title"] = "Stats: " .. StatsPlayer,
 			["type"] = "rich",
 			["color"] = tonumber(0x70FF70),
 		}}
 	}
-else
+elseif StatsPlayer == "Blacklisted" then
 	data2 = {
 		["embeds"] = {{
-			["title"] = "Stats: `"..StatsPlayer.."`",
+			["title"] = "Stats: `" .. StatsPlayer .. "`",
 			["type"] = "rich",
 			["color"] = tonumber(0xFF7070),
 		}}
@@ -232,13 +242,13 @@ local headers = {
 	["content-type"] = "application/json"
 }
 
-local request = http_request or request or HttpPost or syn.request
 local requestData1 = {
 	Url = webcock,
 	Body = HS1,
 	Method = "POST",
 	Headers = headers
 }
+
 local requestData2 = {
 	Url = webcock,
 	Body = HS2,
@@ -246,15 +256,13 @@ local requestData2 = {
 	Headers = headers
 }
 
-for i,v in pairs(SViliszsLoadingUI:GetDescendants()) do
+for i, v in pairs(SViliszsLoadingUI:GetDescendants()) do
 	if v:IsA("ImageLabel") then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency = 1}):Play()
-	end
-	if v:IsA("Frame") then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
-	end
-	if v:IsA("TextLabel") then
-		game:GetService("TweenService"):Create(v,TweenInfo.new(0.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency = 1}):Play()
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { ImageTransparency = 1 }):Play()
+	elseif v:IsA("Frame") then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 1 }):Play()
+	elseif v:IsA("TextLabel") then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextTransparency = 1 }):Play()
 	end
 end
 
@@ -262,5 +270,5 @@ wait(1.5)
 
 SViliszsLoadingUI:Destroy()
 
-request(requestData1)
-request(requestData2)
+http_request(requestData1)
+http_request(requestData2)
