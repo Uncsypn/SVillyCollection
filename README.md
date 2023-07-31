@@ -1,4 +1,4 @@
-<h1 align="center">:meme: Flusin</h1>
+<h1 align="center">Flusin</h1>
 <div align="center">A free and open-source Roblox script hub</div>
 <br>
 <div>&nbsp;</div>
