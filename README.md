@@ -5,7 +5,7 @@
 
 ### :warning: Loadstring
 
-Runs a snapshot of new updates we have not published yet. You will get new features earlier, but they may be unstable.
+Copy & Paste and let the fun begins.
 
 ```lua
 loadstring(
