@@ -3,7 +3,7 @@
 <br>
 <div>&nbsp;</div>
 
-### :construction: Loadstring
+### :warning: Loadstring
 
 Runs a snapshot of new updates we have not published yet. You will get new features earlier, but they may be unstable.
 
