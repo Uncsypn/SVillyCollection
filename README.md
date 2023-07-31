@@ -2,15 +2,6 @@
 <div align="center">A free and open-source Roblox script hub</div>
 <br>
 <div>&nbsp;</div>
-### :pushpin: Latest release
-
-Runs the latest release build of Orca.
-
-```lua
-loadstring(
-  game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua")
-)()
-```
 
 ### :construction: Nightly snapshot
 
